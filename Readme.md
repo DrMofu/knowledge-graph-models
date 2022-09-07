@@ -36,13 +36,13 @@ Model | Score Function $\phi(h,r,t)$
 Unstructred | $-\Vert h-t \Vert_{2}^{2} $ |
 Structred Embedding (SE) | $-\Vert M_{rh}h - M_{rt}t \Vert_{1} $ |
 RESCAL / Binlinear | $h^{\top}R_{r}t$ |
-Tucker | $<M,h \otimes r \otimes t>$, $M \in \mathbb{R}^{3}  $
+Tucker | $\left \langle M,h \otimes r \otimes t \right \rangle $, $M \in \mathbb{R}^{3}  $
 NTN | $u_{r}^{\top}$ tanh $(h^{\top}\widehat{W_{r}}t + M_{r} \begin{bmatrix} h\\t \end{bmatrix} +b_{r})$
 TransE | $-\Vert h + r - t \Vert$ |
 TransH | $-\Vert (h-w_{r}^{\top}hw_{r}) + r - (t-w_{r}^{\top}tw_{r})\Vert$ |
 TransX | $-\Vert g_{1,r}(h) + r - g_{2,r}(t) \Vert$ |
 TransR | $-\Vert M_{r}h + r-M_{r}t \Vert$ |
-DistMult | $<h,r,t>$ |
+DistMult | $ \left \langle h,r,t \right \rangle  $ |
 HolE | $r^{\top}(Fourier^{-1}(\overline{Fourier(h)} \odot  Fourier(t)))$
 ComplEx | Re $(< h,r,\overline{t}>)$ |
 SimplE | $-\frac{1}{2} ( <h, r, t> + <t, r^{-1}, h>)$ |
@@ -52,32 +52,47 @@ RotatE | $-\Vert h \circ r - t \Vert$ |
 
 #### Dynamic (Temporal) Graph Embedding
 - TTransE / TTransH / TTransR: [Encoding Temporal Information for Time-Aware Link Prediction](https://aclanthology.org/D16-1260.pdf) (EMNLP 2016)
-- Know-Evolve [Know-Evolve: Deep Temporal Reasoning for Dynamic Knowledge Graphs](https://arxiv.org/pdf/1705.05742.pdf) (ICML 2017)
+- Know-Evolve: [Know-Evolve: Deep Temporal Reasoning for Dynamic Knowledge Graphs](https://arxiv.org/pdf/1705.05742.pdf) (ICML 2017)
 - HyTE: [HyTE: Hyperplane-based Temporally aware Knowledge Graph Embedding](https://aclanthology.org/D18-1225.pdf) (EMNLP 2018) ([Github](https://github.com/malllabiisc/HyTE))
 - ConT: [Embedding Models for Episodic Knowledge Graphs](https://arxiv.org/pdf/1807.00228.pdf) (Journal of Web Semantics 2018)
 - TA-TransE / TA-DistMult: [Learning Sequence Encoders for Temporal Knowledge Graph Completion](https://arxiv.org/pdf/1809.03202.pdf) (EMNLP 2018)
-- DyRep [DyRep: Learning Representations over Dynamic Graphs](https://openreview.net/pdf?id=HyePrhR5KX) (ICLR 2019)
+- DyRep: [DyRep: Learning Representations over Dynamic Graphs](https://openreview.net/pdf?id=HyePrhR5KX) (ICLR 2019)
 - DE-TransE/ DE-DistMult / DE-SimplE: [Diachronic Embedding for Temporal Knowledge Graph Completion](https://arxiv.org/pdf/1907.03143.pdf) (AAAI 2020) ([Github](https://github.com/BorealisAI/DE-SimplE))
 
 Model | Score Function $\phi(h,r,t,\tau)$
 :---: |:---: 
 TTransE | $\Vert h + r - t - \tau \Vert$ |
 HyTE | $-\Vert (h-w_{\tau}^{\top}hw_{\tau}) + (r-w_{\tau}^{\top}rw_{\tau}) - (t-w_{\tau}^{\top}tw_{\tau})\Vert$ |
-ConT | $<M_t,h \otimes r \otimes t>$, $M_t \in \mathbb{R}^{3}  $
+ConT | $\left \langle M_t,h \otimes r \otimes t \right \rangle $, $M_t \in \mathbb{R}^{3}  $
 TA-TransE / TA-DistMult | Use LSTM to generate embedding $t$. Score function is TransE / DistMult
 
 
 ### Dynamic Graph Model
 - RE-NET: [Recurrent Event Network: Autoregressive Structure Inference over Temporal Knowledge Graphs](https://arxiv.org/pdf/1904.05530.pdf) (EMNLP 2020)
 - CygNet: [Learning from History: Modeling Temporal Knowledge Graphs with Sequential Copy-Generation Networks](https://arxiv.org/pdf/2012.08492.pdf) (AAAI 2021)
-- TGAT
 
+- DynamicTriad: [Dynamic Network Embedding by Modeling Triadic Closure Process](https://ojs.aaai.org/index.php/AAAI/article/view/11257/11116) (AAAI 2018) 
+- NetWalk: [NetWalk: A Flexible Deep Embedding Approach for Anomaly Detection in Dynamic Networks]() (KDD 2018)
+- WD-GCN / CD-GCN: [Dynamic Graph Convolutional Networks](https://arxiv.org/pdf/1704.06199.pdf) (Pattern Recognition 2019)
+- Dyngraph2vec: [dyngraph2vec: Capturing Network Dynamics using Dynamic Graph Representation Learning](https://arxiv.org/pdf/1809.02657.pdf) (Knowledge-Based Systems 2020)
+- EvolveGCN: [EvolveGCN: Evolving Graph Convolutional Networks for Dynamic Graphs](https://arxiv.org/pdf/1902.10191.pdf) (AAAI 2020)
+- DySAT: [DySAT: Deep Neural Representation Learning on Dynamic Graphs via Self-Attention Networks](http://yhwu.me/publications/dysat_wsdm20.pdf) (WSDE 2020)
+- CTDNE: [Continuous-Time Dynamic Network Embeddings](https://dl.acm.org/doi/pdf/10.1145/3184558.3191526) (WWW 2018)
+- JODIE: [Predicting Dynamic Embedding Trajectory in Temporal Interaction Networks](https://arxiv.org/pdf/1908.01207.pdf) (KDD 2019)
+- MMDNE: [Temporal Network Embedding with Micro-and Macro-dynamics](https://arxiv.org/pdf/1909.04246.pdf) (CIKM 2019)
+- HierTCN: [Hierarchical Temporal Convolutional Networks for Dynamic Recommender Systems](https://arxiv.org/pdf/1904.04381.pdf) (WWW 2019)
+
+- TGAT: [Inductive Representation Learning on Temporal Graphs](https://arxiv.org/pdf/2002.07962.pdf) (ICLR 2020)
+- DGNN: [Streaming Graph Neural Networks](https://arxiv.org/pdf/1810.10627.pdf) (SIGIR 2020)
+- CAW: [Inductive Representation Learning in Temporal Networks via Causal Anonymous Walks](https://arxiv.org/pdf/2101.05974.pdf) (ICLR 2021)
+- EvoNet: [Time-Series Event Prediction with Evolutionary State Graph](https://arxiv.org/pdf/1905.05006.pdf) (WSDM 2021)
+- APAN: [APAN: Asynchronous Propagation Attention Network for Real-time Temporal Graph Embedding](https://arxiv.org/pdf/2011.11545.pdf) (SIGMOD 2021)
 
 ### Graph Model
 - Graph-SAGE: [Inductive Representation Learning on Large Graphs](https://proceedings.neurips.cc/paper/2017/file/5dd9db5e033da9c6fb5ba83c7a7ebea9-Paper.pdf) (NIPS 2017)
-- GCN [Semi-Supervised Classification with Graph Convolutional Networks](https://arxiv.org/pdf/1609.02907.pdf) (ICLR 2017)
-- GAT [Graph Attention Networks](https://arxiv.org/pdf/1710.10903.pdf) (ICLR 2018)
-- R-GCN [Modeling Relational Data with Graph Convolutional Networks](https://arxiv.org/pdf/1703.06103.pdf) (ESWC 2018)
+- GCN: [Semi-Supervised Classification with Graph Convolutional Networks](https://arxiv.org/pdf/1609.02907.pdf) (ICLR 2017)
+- GAT: [Graph Attention Networks](https://arxiv.org/pdf/1710.10903.pdf) (ICLR 2018)
+- R-GCN: [Modeling Relational Data with Graph Convolutional Networks](https://arxiv.org/pdf/1703.06103.pdf) (ESWC 2018)
 
 
 ## Datasets
@@ -104,10 +119,16 @@ TA-TransE / TA-DistMult | Use LSTM to generate embedding $t$. Score function is 
     - Cora
     - Citeseer
     - Pumbed
+- [OGB](https://ogb.stanford.edu/)
 
 ## Libararies
 
 - [Deep Graph Library (DGL)](https://www.dgl.ai/)
+- [PyTorch Geometric Temporal](https://github.com/benedekrozemberczki/pytorch_geometric_temporal)
+- [PyKEEN](https://github.com/pykeen/pykeen)
+- [GraphVite](https://github.com/DeepGraphLearning/graphvite)
+- [Stellar Graph](https://github.com/stellargraph/stellargraph)
 - [DGL-KE](https://github.com/awslabs/dgl-ke)
+- [OpenKE](https://github.com/thunlp/OpenKE)
 
 ## Others
